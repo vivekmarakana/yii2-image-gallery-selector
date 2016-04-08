@@ -1,4 +1,4 @@
-Yii2 Image/Media Selector
+Yii2 Image Gallery Selector
 =========================
 multiple image selector from gallery for yii2
 
@@ -10,13 +10,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist vivekmarkana/yii2-images-selector "*"
+php composer.phar require --prefer-dist vivekmarakana/yii2-images-selector "*"
 ```
 
 or add
 
 ```
-"vivekmarkana/yii2-images-selector": "*"
+"vivekmarakana/yii2-images-selector": "*"
 ```
 
 to the require section of your `composer.json` file.
