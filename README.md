@@ -28,4 +28,7 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-<?= \vivekmarakana\widgets\AutoloadExample::widget(); ?>```
+<?=
+    \vivekmarakana\widgets\GallerySelector::widget(['images' => $images]);
+?>
+```
