@@ -6,6 +6,9 @@ class GallerySelector extends \yii\base\Widget
 {
     const WIDGET_NAME = 'gallery-selector';
 
+    public $images = [];
+    public $id;
+
     public function run()
     {
         return $this->render('gallery-selector', [

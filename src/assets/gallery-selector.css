@@ -1,14 +1,51 @@
-.gallery-selector-container a{
-    float:left;
-    position:relative;
-    border: 1px solid #e7e7e7;
+.gallery-selector-container{
+    font-size: 0;
+    text-align: center;
 }
 
-.gallery-selector-img{
-    float:left;
+.gallery-selector-container .gallery-selector-image{
     position:relative;
-    border: 1px solid #e9e9e9;
-    margin-right: 10px;
+    border: 1px solid #e7e7e7;
+    width: 200px;
+    height: 200px;
+    background-color: #f3f3f3;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.gallery-selector-container .gallery-selector-image:hover{
+    border: 1px solid #C7C7C7;
+}
+
+.gallery-selector-container .gallery-selector-image .glyphicon{
+    display: none;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    top: auto;
+    font-size: 25px;
+    margin: 0;
+    color: #FFFFFF;
+}
+
+.gallery-selector-container .gallery-selector-image.added .glyphicon{
+    display: inline-block;
+}
+
+.gallery-selector-container .gallery-selector-image.added:before{
+    display: block;
+    position: absolute;
+    content: "";
+    right: 0;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .gallery-selector-img .btn{
@@ -17,16 +54,4 @@
     bottom: 0;
 }
 
-.gallery-selector-container img{
-    width: 100px;
-}
 
-.gallery-selector-container input{
-    position:absolute;
-    right: 0;
-    bottom: 0;
-}
-
-.gallery-selector-container a:hover{
-    border: 1px solid red;
-}

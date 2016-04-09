@@ -5,15 +5,20 @@ namespace vivekmarakana\widgets;
  *
  * @author Vivek Marakana <vivek.marakana@gmail.com>
  */
-class TimelineAssets extends \yii\web\AssetBundle
+class GallerySelectorAssets extends \yii\web\AssetBundle
 {
     public $depends = [
         '\yii\web\JqueryAsset',
-        '\rmrevin\yii\fontawesome\AssetBundle'
+        '\yii\bootstrap\BootstrapAsset',
+        '\yii\bootstrap\BootstrapPluginAsset'
     ];
 
     public $css = [
         'gallery-selector.css',
+    ];
+
+    public $js = [
+        'gallery-selector.js',
     ];
 
     /**
