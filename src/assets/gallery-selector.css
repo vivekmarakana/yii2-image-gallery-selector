@@ -3,17 +3,21 @@
     text-align: center;
 }
 
+.gallery-selector-widget .selected-img,
 .gallery-selector-container .gallery-selector-image{
-    position:relative;
-    border: 1px solid #e7e7e7;
-    width: 200px;
-    height: 200px;
+    position: relative;
+    display: inline-block;
     background-color: #f3f3f3;
     -webkit-background-size: cover;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    display: inline-block;
+}
+
+.gallery-selector-container .gallery-selector-image{
+    border: 1px solid #e7e7e7;
+    width: 200px;
+    height: 200px;
     margin: 5px;
     cursor: pointer;
 }
@@ -22,21 +26,21 @@
     border: 1px solid #C7C7C7;
 }
 
-.gallery-selector-container .gallery-selector-image .glyphicon{
+.gallery-selector-container .gallery-selector-image .glyphicon,
+.gallery-selector-widget .selected-img .glyphicon{
     display: none;
     position: absolute;
-    right: 10px;
-    bottom: 10px;
-    top: auto;
-    font-size: 25px;
     margin: 0;
     color: #FFFFFF;
 }
 
+.gallery-selector-widget .selected-img:hover .glyphicon,
 .gallery-selector-container .gallery-selector-image.added .glyphicon{
     display: inline-block;
+    cursor: pointer;
 }
 
+.gallery-selector-widget .selected-img:hover:before,
 .gallery-selector-container .gallery-selector-image.added:before{
     display: block;
     position: absolute;
@@ -48,10 +52,30 @@
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-.gallery-selector-img .btn{
-    position: absolute;
-    right: 0;
-    bottom: 0;
+.gallery-selector-container .gallery-selector-image .glyphicon{
+    right: 10px;
+    bottom: 10px;
+    top: auto;
+    font-size: 25px;
 }
 
+.gallery-selector-widget .selected-img .glyphicon{
+    top: 5px;
+    right: 5px;
+    font-size: 15px;
+}
 
+.gallery-selector-widget .no-image-selected{
+    font-style: oblique;
+    font-size: 13px;
+}
+
+.gallery-selector-widget .selected-images{
+    margin: 0 -5px;
+}
+
+.gallery-selector-widget .selected-img{
+    width: 100px;
+    height: 100px;
+    margin: 0 5px 5px 5px;
+}

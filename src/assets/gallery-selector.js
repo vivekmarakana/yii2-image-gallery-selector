@@ -1,49 +1,56 @@
 jQuery(document).ready(function($){
-    var mediaModal = $('#media-modal'),
-    library = $('#librayr'), //tab
-    productImagesContainer = $('.product-images'); //container
-
-    library.on('click','.gallery-selector-image',function(e){
+    $(document).on('click','.gallery-selector-widget .gallery-selector-image',function(e){
         e.preventDefault();
         $(this).toggleClass('added');
     });
 
-    //insert button and send images to the form and hidden fields tooo....
-    $('.insert').click(function(e){
-        //collect checkbox
-        var checkboxes = library.find('input[type=checkbox]');
-        checkboxes.each(function(i, el){
-            if(el.checked){
-                var imageId = $(el).parent().data('image-id');
-                var imgSrc = $(el).siblings('img').attr('src');
+    $(document).on('click', '.gallery-selector-widget .gallery-image-select', function(e){
+        //collect selected images
+        var $this = $(this);
+        var $context = $this.closest('.gallery-selector-widget');
+        var $mediaModal = $this.closest('.modal');
+        var $library = $context.find('.gallery-selector-container');
+        var $selectedImageContainer = $context.find('.selected-images');
 
+        console.log($mediaModal, $library, $selectedImageContainer);
+
+        var images = $library.find('.gallery-selector-image.added');
+        images.each(function(i, el){
+            var $el = $(el);
+            var imageId = $el.data('image-id');
+            var imgSrc = $el.data('image-url');
+
+            if ($selectedImageContainer.find('.selected-img[data-image-id="' + imageId + '"]').length == 0){
                 //template
-                var template =  '<div class="product-img">'+
-                                    '<input type="hidden" name="image-ids[]" value="'+ imageId +'">'+
-                                    '<img src="'+ imgSrc +'" />'+
-                                    '<a href="#" class="btn btn-xs btn-danger remove">'+
-                                    '<span class="glyphicon glyphicon-remove-sign"></span></a>'+
+                var template =  '<div class="selected-img" style="background-image: url(\'' + imgSrc + '\')" data-image-id="' + imageId + '">'+
+                                    '<input type="hidden" name="selected-image-ids[]" value="'+ imageId +'">'+
+                                    '<span class="glyphicon glyphicon-remove-sign remove-selected-image"></span>' +
                                 '</div>';
                 //append
-                productImagesContainer.append(template);
+                $selectedImageContainer.append(template);
+            }
+
+            $context.find('.no-image-selected').hide();
+        });
+
+        //hide modal
+        $mediaModal.modal('hide');
+    });
+
+    $(document).on('click', '.gallery-selector-widget .remove-selected-image', function(e){
+        e.preventDefault();
+        var $this = $(this);
+        var $context = $this.closest('.gallery-selector-widget');
+
+        //fadeout animation, remove and un-select from gallery....
+        var $image = $(this).parent('.selected-img');
+        var image_id = $image.find('input').val();
+        $image.fadeOut('100', function(){
+            $(this).remove();
+            $context.find('.gallery-selector-image[data-image-id="' + image_id + '"]').removeClass('added');
+            if ($context.find('.selected-img').length == 0) {
+                $context.find('.no-image-selected').show();
             }
         });
-        //hide modal
-        mediaModal.modal('hide');
     });
-
-    //remove product images js
-    productImagesContainer.on('click', '.remove', function(e){
-        e.preventDefault();
-        //fadeout animation and remove....
-        $(this).parent('.product-img').fadeOut('100', function(){
-            $(this).remove();
-        });
-    });
-
-    //thanks for watching........... this video..............
-
-    //subscribe, share, like, comment....
-
-    /////...............
 })
