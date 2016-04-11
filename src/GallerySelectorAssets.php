@@ -1,5 +1,6 @@
 <?php
 namespace vivekmarakana\widgets;
+
 /**
  * Asset bundle for GallerySelector Widget
  *
