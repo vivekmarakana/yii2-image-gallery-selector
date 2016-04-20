@@ -10,13 +10,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist vivekmarakana/yii2-images-selector "*"
+php composer.phar require --prefer-dist vivekmarakana/yii2-image-gallery-selector "dev-master"
 ```
 
 or add
 
 ```
-"vivekmarakana/yii2-images-selector": "*"
+"vivekmarakana/vivekmarakana/yii2-image-gallery-selector": "dev-master"
 ```
 
 to the require section of your `composer.json` file.
