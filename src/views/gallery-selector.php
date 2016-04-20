@@ -22,15 +22,26 @@
                 </div>
 
                 <div class="modal-body">
-                    <div class="gallery-selector-container">
-                        <div class="images-list">
-                            <?php foreach ($images as $index => $image): ?>
-                                <div class="gallery-selector-image" data-image-id="<?=$image['id']?>" data-image-name="<?=isset($image['name']) ? $image['name'] : $id . '-image-' . $index ?>" style="background-image: url('<?=$image['url']?>');" data-image-url="<?=$image['url']?>">
-                                    <span class="glyphicon glyphicon-check"></span>
-                                </div>
-                            <?php endforeach ?>
+                    <ul class="nav nav-tabs" data-tabs="tabs" style="margin-bottom: 10px;">
+                        <li class="active"><a href="#upload-new" data-toggle="tab">Upload</a></li>
+                        <li><a href="#select-from-gallery" data-toggle="tab">Select from Gallery</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active gallery-upload-container" id="upload-new">
+                            <div class="image-placeholder">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </div>
                         </div>
-                        <button type="button" class="btn btn-primary gallery-image-select" style="margin-left: 5px; margin-top: 10px;">Select</button>
+                        <div class="tab-pane gallery-selector-container" id="select-from-gallery">
+                            <div class="images-list">
+                                <?php foreach ($images as $index => $image): ?>
+                                    <div class="gallery-selector-image" data-image-id="<?=$image['id']?>" data-image-name="<?=isset($image['name']) ? $image['name'] : $id . '-image-' . $index ?>" style="background-image: url('<?=$image['url']?>');" data-image-url="<?=$image['url']?>">
+                                        <span class="glyphicon glyphicon-check"></span>
+                                    </div>
+                                <?php endforeach ?>
+                            </div>
+                            <button type="button" class="btn btn-primary gallery-image-select" style="margin-left: 5px; margin-top: 10px;">Select</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -46,7 +57,7 @@ $script = <<<JS
     var _blank = _context.find('.no-image-selected');
 
     _context.data('imageselector', {
-        setImages: function(images){
+        setGalleryImages: function(images){
             if (images && images instanceof Array) {
                 this.clear();
                 $.each(images, function(index, el){

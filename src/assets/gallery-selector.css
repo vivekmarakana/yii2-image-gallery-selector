@@ -1,9 +1,11 @@
+.gallery-upload-container,
 .gallery-selector-container{
     font-size: 0;
     text-align: center;
 }
 
 .gallery-selector-widget .selected-img,
+.gallery-upload-container .gallery-uploader-image,
 .gallery-selector-container .gallery-selector-image{
     position: relative;
     display: inline-block;
@@ -12,8 +14,11 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    vertical-align: top;
 }
 
+.gallery-upload-container .image-placeholder,
+.gallery-upload-container .gallery-uploader-image,
 .gallery-selector-container .gallery-selector-image{
     border: 1px solid #e7e7e7;
     width: 200px;
@@ -78,4 +83,18 @@
     width: 100px;
     height: 100px;
     margin: 0 5px 5px 5px;
+}
+
+.gallery-upload-container .image-placeholder{
+    display: inline-block;
+    border: 2px solid #9A9999;
+    background-color: #f3f3f3;
+}
+
+.gallery-upload-container .image-placeholder .glyphicon{
+    font-size: 50px;
+    text-align: center;
+    display: block;
+    margin: 72px 0;
+    color: #9A9999;
 }

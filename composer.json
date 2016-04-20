@@ -15,7 +15,8 @@
     },
     "autoload": {
         "psr-4": {
-            "vivekmarakana\\widgets\\": "src"
+            "vivekmarakana\\widgets\\": "src",
+            "vivekmarakana\\helpers\\": "helpers"
         }
     }
 }

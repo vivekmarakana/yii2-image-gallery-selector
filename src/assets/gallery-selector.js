@@ -4,6 +4,38 @@ jQuery(document).ready(function($){
         $(this).toggleClass('added');
     });
 
+    $(document).on('click','.gallery-selector-widget .image-placeholder',function(e){
+        e.preventDefault();
+        var $this = $(this);
+        var $container = $this.closest('.gallery-upload-container');
+        var $context = $this.closest('.gallery-selector-widget');
+        var $selectedImageContainer = $context.find('.selected-images');
+
+        $('<input name="uploaded-images[]" type="file" multiple="1" accept="image/*" style="display: none;">').on('change', function(e){
+            var $el = $(this);
+            if (this.files && this.files.length > 0) {
+                $.each(this.files, function(){
+                    var reader = new FileReader();
+                    var filename = this.name;
+                    reader.onload = function(e) {
+                        var template =  '<div class="selected-img uploaded-img" style="background-image: url(\'' + e.target.result + '\')">'+
+                                            '<span class="glyphicon glyphicon-remove-sign remove-selected-image"></span>' +
+                                        '</div>';
+                        var $template = $(template);
+                        $template.append($el);
+                        $selectedImageContainer.append($template);
+
+                        $context.find('.no-image-selected').hide();
+
+                        var template_modal =  '<div class="gallery-uploader-image" data-image-name="' + filename + '" style="background-image: url(\'' + e.target.result + '\');" data-image-url="' + e.target.result + '"></div>';
+                        $(template_modal).insertBefore($this);
+                    }
+                    reader.readAsDataURL(this);
+                });
+            }
+        }).trigger('click');
+    });
+
     $(document).on('click', '.gallery-selector-widget .gallery-image-select', function(e){
         //collect selected images
         var $this = $(this);
