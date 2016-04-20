@@ -21,8 +21,8 @@
 .gallery-upload-container .gallery-uploader-image,
 .gallery-selector-container .gallery-selector-image{
     border: 1px solid #e7e7e7;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     margin: 5px;
     cursor: pointer;
 }
@@ -95,6 +95,6 @@
     font-size: 50px;
     text-align: center;
     display: block;
-    margin: 72px 0;
+    margin: 47px 0;
     color: #9A9999;
 }

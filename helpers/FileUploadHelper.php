@@ -69,17 +69,47 @@ class FileUploadHelper {
      * ```
      */
     public static function refineFilesArray(&$file_post){
-        $file_ary = array();
-        $file_count = count($file_post['name']);
-        $file_keys = array_keys($file_post);
+        if (is_array($file_post)) {
+            $file_ary = array();
+            $file_count = count($file_post['name']);
+            if ($file_count > 0) {
+                $file_keys = array_keys($file_post);
 
-        for ($i=0; $i<$file_count; $i++) {
-            foreach ($file_keys as $key) {
-                $file_ary[$i][$key] = $file_post[$key][$i];
+                for ($i=0; $i<$file_count; $i++) {
+                    foreach ($file_keys as $key) {
+                        self::fixData($file_ary, $file_post[$key][$i], $key, $i);
+                    }
+                }
+            }
+
+            return $file_ary;
+        } else {
+            throw new \Exception("Argument 1 needs to be an Array. [" . gettype($file_post) . " provided.]", 1);
+        }
+    }
+
+    private static function fixData(&$file_ary, $v, $key, $i){
+        // echo "--->>> " . $i . "<br/>";
+        if (is_array($v)) {
+            foreach ($v as $index => $val) {
+                self::fixData($file_ary, $val, $key, $i . "/" . $index);
+            }
+        } else {
+            $indexes = explode('/', $i);
+            $tst = &$file_ary;
+            for($j = 0; $j < count($indexes); $j++){
+                $ii = $indexes[$j];
+                if (!array_key_exists($ii, $tst)){
+                    // echo "------->>> " . $ii . " key created" . "<br/>";
+                    $tst[$ii] = [];
+                }
+                $tst = &$tst[$ii];
+                if ($j == count($indexes) - 1) {
+                    // echo "------------->>> Set [" . join($indexes, '>') . "]" . $ii . ":" . $key . "-->" . $v . "<br/>";
+                    $tst[$key] = $v;
+                }
             }
         }
-
-        return $file_ary;
     }
 }
 ?>

@@ -18,7 +18,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button class="close" data-dismiss="modal">&times;</button>
-                    <h4>Image Gallery Selector</h4>
+                    <h4><?=$modalTitle?></h4>
                 </div>
 
                 <div class="modal-body">
@@ -28,9 +28,12 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active gallery-upload-container" id="upload-new">
-                            <div class="image-placeholder">
-                                <span class="glyphicon glyphicon-plus"></span>
+                            <div class="images-list">
+                                <div class="image-placeholder" data-upload-key="<?=$uploadKey?>">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </div>
                             </div>
+                            <button type="button" class="btn btn-primary gallery-image-select" style="margin-left: 5px; margin-top: 10px;">Select</button>
                         </div>
                         <div class="tab-pane gallery-selector-container" id="select-from-gallery">
                             <div class="images-list">
@@ -76,6 +79,7 @@ $script = <<<JS
         clear: function(){
             _container.html('');
             _selected.html('');
+            _context.find('.gallery-uploader-image').remove();
             _blank.show();
         }
     });
