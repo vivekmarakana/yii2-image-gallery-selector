@@ -23,11 +23,11 @@
 
                 <div class="modal-body">
                     <ul class="nav nav-tabs" data-tabs="tabs" style="margin-bottom: 10px;">
-                        <li class="active"><a href="#upload-new" data-toggle="tab">Upload</a></li>
-                        <li><a href="#select-from-gallery" data-toggle="tab">Select from Gallery</a></li>
+                        <li class="active"><a href="#upload_new" data-toggle="tab">Upload</a></li>
+                        <li><a href="#select_from_gallery" data-toggle="tab">Select from Gallery</a></li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane active gallery-upload-container" id="upload-new">
+                        <div class="tab-pane active gallery-upload-container" id="upload_new">
                             <div class="images-list">
                                 <div class="image-placeholder" data-upload-key="<?=$uploadKey?>">
                                     <span class="glyphicon glyphicon-plus"></span>
@@ -35,7 +35,7 @@
                             </div>
                             <button type="button" class="btn btn-primary gallery-image-select" style="margin-left: 5px; margin-top: 10px;">Select</button>
                         </div>
-                        <div class="tab-pane gallery-selector-container" id="select-from-gallery">
+                        <div class="tab-pane gallery-selector-container" id="select_from_gallery">
                             <div class="images-list">
                                 <?php foreach ($images as $index => $image): ?>
                                     <div class="gallery-selector-image" data-image-id="<?=$image['id']?>" data-image-name="<?=isset($image['name']) ? $image['name'] : $id . '-image-' . $index ?>" style="background-image: url('<?=$image['url']?>');" data-image-url="<?=$image['url']?>">
@@ -65,7 +65,7 @@ $script = <<<JS
                 this.clear();
                 $.each(images, function(index, el){
                     if(el instanceof Object && el.id && el.url){
-                        var name = (el.name) ? el.name : "{$id}-image-" + index;
+                        var name = (el.name) ? el.name : "{$id}_image_" + index;
                         var template =  '<div class="gallery-selector-image" data-image-id="' + el.id + '" data-image-name="' + name + '" style="background-image: url(\'' + el.url + '\');" data-image-url="' + el.url + '"><span class="glyphicon glyphicon-check"></span></div>';
                         _container.append(template);
                     } else {
