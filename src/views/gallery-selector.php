@@ -66,8 +66,12 @@ $script = <<<JS
                 $.each(images, function(index, el){
                     if(el instanceof Object && el.id && el.url){
                         var name = (el.name) ? el.name : "{$id}_image_" + index;
-                        var template =  '<div class="gallery-selector-image" data-image-id="' + el.id + '" data-image-name="' + name + '" style="background-image: url(\'' + el.url + '\');" data-image-url="' + el.url + '"><span class="glyphicon glyphicon-check"></span></div>';
+                        var extra_class = (el.selected) ? "added" : "";
+                        var template =  '<div class="gallery-selector-image ' + extra_class + '" data-image-id="' + el.id + '" data-image-name="' + name + '" style="background-image: url(\'' + el.url + '\');" data-image-url="' + el.url + '"><span class="glyphicon glyphicon-check"></span></div>';
                         _container.append(template);
+
+                        template = '<div class="selected-img" style="background-image: url(\'' + el.url + '\');" data-image-id="' + el.id + '"><input type="hidden" name="selected-image-ids[]" value="9318"><span class="glyphicon glyphicon-remove-sign remove-selected-image"></span></div>';
+                        _selected.append(template);
                     } else {
                         console.error("Invalid object found in images array: ", el);
                     }
