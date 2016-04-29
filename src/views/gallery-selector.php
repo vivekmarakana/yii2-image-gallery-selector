@@ -70,8 +70,11 @@ $script = <<<JS
                         var template =  '<div class="gallery-selector-image ' + extra_class + '" data-image-id="' + el.id + '" data-image-name="' + name + '" style="background-image: url(\'' + el.url + '\');" data-image-url="' + el.url + '"><span class="glyphicon glyphicon-check"></span></div>';
                         _container.append(template);
 
-                        template = '<div class="selected-img" style="background-image: url(\'' + el.url + '\');" data-image-id="' + el.id + '"><input type="hidden" name="selected-image-ids[]" value="9318"><span class="glyphicon glyphicon-remove-sign remove-selected-image"></span></div>';
-                        _selected.append(template);
+                        if (el.selected) {
+                            template = '<div class="selected-img" style="background-image: url(\'' + el.url + '\');" data-image-id="' + el.id + '"><input type="hidden" name="selected-image-ids[]" value="9318"><span class="glyphicon glyphicon-remove-sign remove-selected-image"></span></div>';
+                            _selected.append(template);
+                            _blank.hide();
+                        }
                     } else {
                         console.error("Invalid object found in images array: ", el);
                     }
