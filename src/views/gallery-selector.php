@@ -71,7 +71,7 @@ $script = <<<JS
                         _container.append(template);
 
                         if (el.selected) {
-                            template = '<div class="selected-img" style="background-image: url(\'' + el.url + '\');" data-image-id="' + el.id + '"><input type="hidden" name="selected-image-ids[]" value="9318"><span class="glyphicon glyphicon-remove-sign remove-selected-image"></span></div>';
+                            template = '<div class="selected-img" style="background-image: url(\'' + el.url + '\');" data-image-id="' + el.id + '"><input type="hidden" name="selected-image-ids[]" value="' + el.id + '"><span class="glyphicon glyphicon-remove-sign remove-selected-image"></span></div>';
                             _selected.append(template);
                             _blank.hide();
                         }
