@@ -28,7 +28,13 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-<?=
-    \vivekmarakana\widgets\GallerySelector::widget(['images' => $images]);
-?>
+foreach (Image::find()->each(100) as $row) {
+    $image = [
+        'name' => $row->image_name, //optional
+        'url' => $row->url,
+        'id' => 'image-' . $row->id,
+    ];
+}
+
+echo \vivekmarakana\widgets\GallerySelector::widget(['images' => $images]);
 ```
