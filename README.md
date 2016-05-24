@@ -28,8 +28,9 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 
 ```php
+$images = [];
 foreach (Image::find()->each(100) as $row) {
-    $image = [
+    $images[] = [
         'name' => $row->image_name, //optional
         'url' => $row->url,
         'id' => 'image-' . $row->id,
