@@ -58,7 +58,7 @@ class FileUploadHelper {
      * Now we can iterate over the array to access each file like:
      * ```php
      * if ($_FILES['upload']) {
-     *     $file_ary = reArrayFiles($_FILES['ufile']);
+     *     $file_ary = FileUploadHelper::refineFilesArray($_FILES['ufile']);
      *
      *     foreach ($file_ary as $file) {
      *         print 'File Name: ' . $file['name'];
