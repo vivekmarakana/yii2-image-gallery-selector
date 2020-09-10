@@ -1,5 +1,10 @@
 Yii2 Image Gallery Selector
 =========================
+
+[![Total Downloads](https://poser.pugx.org/vivekmarakana/yii2-image-gallery-selector/downloads)](//packagist.org/packages/vivekmarakana/yii2-image-gallery-selector)
+[![Monthly Downloads](https://poser.pugx.org/vivekmarakana/yii2-image-gallery-selector/d/monthly)](//packagist.org/packages/vivekmarakana/yii2-image-gallery-selector)
+[![License](https://poser.pugx.org/vivekmarakana/yii2-image-gallery-selector/license)](//packagist.org/packages/vivekmarakana/yii2-image-gallery-selector)
+
 multiple image selector from gallery for yii2
 
 Installation
